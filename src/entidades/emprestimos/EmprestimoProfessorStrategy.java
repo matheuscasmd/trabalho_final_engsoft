@@ -1,6 +1,6 @@
 package entidades.emprestimos;
 
-public class EmprestimoProfessorStrategy extends EmprestimoStrategy {
+public class EmprestimoProfessorStrategy implements IEmprestimoStrategy {
 
 	//8 dias
 	@Override

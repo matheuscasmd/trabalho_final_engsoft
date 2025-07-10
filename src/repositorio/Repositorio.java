@@ -7,9 +7,9 @@ import java.util.Map;
 
 import entidades.Livro;
 import entidades.fabricas.AlunoGraduacaoFactory;
-import entidades.fabricas.AlunoPosGraduacaoFactory;
+import entidades.fabricas.AlunoPosFactory;
+import entidades.fabricas.IUsuarioFactory;
 import entidades.fabricas.ProfessorFactory;
-import entidades.fabricas.UsuarioFactory;
 import entidades.usuarios.Usuario;
 
 public class Repositorio {
@@ -33,10 +33,11 @@ public class Repositorio {
 	
 	
 	private void popularUsuariosDadosTeste() {
-	    Map<String, UsuarioFactory> fabricasUsuario = new HashMap<>();
-	    fabricasUsuario.put("Aluno Graduação", new AlunoGraduacaoFactory());
-	    fabricasUsuario.put("Aluno Pós-Graduação", new AlunoPosGraduacaoFactory());
-	    fabricasUsuario.put("Professor", new ProfessorFactory());
+	    Map<String, IUsuarioFactory> fabricas = new HashMap<>();
+	    
+	    fabricas.put("Aluno Graduação", new AlunoGraduacaoFactory());
+	    fabricas.put("Aluno Pós-Graduação", new AlunoPosFactory());
+	    fabricas.put("Professor", new ProfessorFactory());
 
 	    List<String[]> dadosUsuarios = List.of(
 	        new String[]{"123", "Aluno Graduação", "João da Silva"},
@@ -50,7 +51,7 @@ public class Repositorio {
 	        String tipo = dados[1];
 	        String nome = dados[2];
 
-	        UsuarioFactory fabrica = fabricasUsuario.get(tipo);
+	        IUsuarioFactory fabrica = fabricas.get(tipo);
 	        if (fabrica != null) {
 	            Usuario usuario = fabrica.criarUsuario(codigo, nome);
 	            usuarios.add(usuario);
