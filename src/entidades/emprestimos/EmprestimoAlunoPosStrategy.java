@@ -4,7 +4,6 @@ public class EmprestimoAlunoPosStrategy extends EmprestimoStrategy {
 
 	public EmprestimoAlunoPosStrategy() {
 		super(3, 5);
-		// TODO Auto-generated constructor stub
 	}
 	
 	//5 dias de emprestimo
