@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import entidades.Exemplar;
 import entidades.Livro;
 import entidades.fabricas.AlunoGraduacaoFactory;
 import entidades.fabricas.AlunoPosFactory;
@@ -16,10 +17,12 @@ public class Repositorio {
 	
 	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	private ArrayList<Livro> livros = new ArrayList<Livro>();
+	private ArrayList<Exemplar> exemplares = new ArrayList<Exemplar>();
 	
 	private Repositorio() {
 		popularUsuariosDadosTeste();
 		popularLivrosDadosTeste();
+		cadastrarExemplares();
 	}
 	private static Repositorio instance;
 	
@@ -70,6 +73,15 @@ public class Repositorio {
 		livros.add(new Livro(400, "Design Patterns: Element of Reusable Object-Oriented Software", "Addison Wesley Professional" , "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides", 1, 1994));
 		livros.add(new Livro(401, "UML Distilled: A Brief Guide to the Standard Object Modeling Language", "Addison Wesley Professional", "Martin Fowler", 3, 2003));
 	}
+	
+	
+	private void cadastrarExemplares() {
+	    int contador = 1;
+	    for (Livro livro : livros) {
+	        exemplares.add(new Exemplar(livro.getId(), contador++));
+	    }
+	}
+
 	
 	
 	public Usuario buscarUsuarioPorCodigo(int idUsuario) {

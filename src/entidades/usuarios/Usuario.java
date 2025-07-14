@@ -1,13 +1,13 @@
 package entidades.usuarios;
 
-import entidades.emprestimos.IEmprestimoStrategy;
+import entidades.emprestimos.EmprestimoStrategy;
 
 public abstract class Usuario {
 	private int id;
 	private String nome;
-	private IEmprestimoStrategy emprestimo;
+	private EmprestimoStrategy emprestimo;
 	
-	public Usuario(int codigo, String nome, IEmprestimoStrategy emprestimo) {
+	public Usuario(int codigo, String nome, EmprestimoStrategy emprestimo) {
 		this.id = codigo;
 		this.setNome(nome);
 		this.emprestimo = emprestimo;
