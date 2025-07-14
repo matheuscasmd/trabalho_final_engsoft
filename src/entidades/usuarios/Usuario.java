@@ -9,6 +9,8 @@ import entidades.Exemplar;
 import entidades.Livro;
 import entidades.Reserva;
 import entidades.emprestimos.EmprestimoStrategy;
+import entidades.enums.StatusEmprestimo;
+import entidades.enums.StatusExemplar;
 
 public class Usuario {
     protected int codigo;
@@ -17,9 +19,14 @@ public class Usuario {
     protected List<Reserva> reservas = new ArrayList<>();
     protected EmprestimoStrategy regraEmprestimo;
     
-    public Usuario(int codigo, String nome) {
+    public Usuario(int codigo, String nome, EmprestimoStrategy r) {
         this.codigo = codigo;
         this.nome = nome;
+        this.regraEmprestimo = r;
+    }
+    
+    public int getCodigo() {
+    	return this.codigo;
     }
 
     public boolean emprestar(Livro livro) {
@@ -28,21 +35,21 @@ public class Usuario {
         if (ex == null) return false;
         LocalDate hoje = LocalDate.now();
         LocalDate devolucao = hoje.plusDays(regraEmprestimo.getPrazoDias());
-        Emprestimo e = new Emprestimo(this,livro.getTitulo(), ex, hoje, devolucao);
+        Emprestimo e = new Emprestimo(this,livro, ex, hoje, devolucao);
         emprestimos.add(e);
-        ex.status = StatusExemplar.EMPRESTADO;
-        ex.emprestadoPara = this;
+        ex.setStatus(StatusExemplar.EMPRESTADO);
+        ex.setEmprestadoPara(this);
         reservas.removeIf(r -> r.getLivro() == livro);
-        livro.reservas.removeIf(r -> r.usuario == this);
+        livro.removerReserva(this);
         return true;
     }
 
     public void devolver(Livro livro) {
         for (Emprestimo e : emprestimos) {
-            if (e.livro == livro && e.status.equals("EM CURSO")) {
-                e.status = "FINALIZADO";
-                e.dataDevolucaoReal = LocalDate.now();
-                e.exemplar.status = StatusExemplar.DISPONIVEL;
+            if (e.getLivro() == livro && e.getStatus().equals("Em curso")) {
+                e.setStatus(StatusEmprestimo.FINALIZADO);
+                e.setDataDevolucao(LocalDate.now());;
+                e.getExemplar().setStatus(StatusExemplar.DISPONIVEL);
                 break;
             }
         }
@@ -54,7 +61,7 @@ public class Usuario {
         livro.adicionarReserva(r);
     }
 
-    public void mostrarInfo() {
+    public void descrever() {
         System.out.println("Usuário: " + nome);
         System.out.println("Empréstimos:");
         for (Emprestimo e : emprestimos)

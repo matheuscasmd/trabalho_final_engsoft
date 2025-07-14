@@ -1,4 +1,4 @@
-package repositorio;
+package utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,7 +22,7 @@ public class Repositorio {
 	private Repositorio() {
 		popularUsuariosDadosTeste();
 		popularLivrosDadosTeste();
-		cadastrarExemplares();
+		popularExemplares();
 	}
 	private static Repositorio instance;
 	
@@ -75,12 +75,18 @@ public class Repositorio {
 	}
 	
 	
-	private void cadastrarExemplares() {
-	    int contador = 1;
-	    for (Livro livro : livros) {
-	        exemplares.add(new Exemplar(livro.getId(), contador++));
-	    }
-	}
+
+    private void popularExemplares() {
+        buscarLivroPorCodigo(100).adicionarExemplar(new Exemplar(1));
+        buscarLivroPorCodigo(100).adicionarExemplar(new Exemplar(2));
+        buscarLivroPorCodigo(101).adicionarExemplar(new Exemplar(3));
+        buscarLivroPorCodigo(200).adicionarExemplar(new Exemplar(4));
+        buscarLivroPorCodigo(201).adicionarExemplar(new Exemplar(5));
+        buscarLivroPorCodigo(300).adicionarExemplar(new Exemplar(6));
+        buscarLivroPorCodigo(300).adicionarExemplar(new Exemplar(7));
+        buscarLivroPorCodigo(400).adicionarExemplar(new Exemplar(8));
+        buscarLivroPorCodigo(400).adicionarExemplar(new Exemplar(9));
+    }
 
 	
 	
@@ -90,6 +96,7 @@ public class Repositorio {
 	            return u;
 	        }
 	    }
+	    System.out.println("Usuário não encontrado");
 	    return null;
 	}
 

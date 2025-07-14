@@ -1,25 +1,17 @@
 package entidades;
 
+import entidades.enums.StatusExemplar;
+import entidades.usuarios.Usuario;
+
 public class Exemplar {
 	
-	private int codigoLivro,codigoExemplar;
-	private boolean disponivel;
+	private int codigoExemplar;
+	private StatusExemplar status = StatusExemplar.DISPONIVEL;
+	private Usuario emprestadoPara;
 	
 	
-	public Exemplar(int livro, int exemplar) {
-		this.setCodigoLivro(livro);
+	public Exemplar(int exemplar) {
 		this.setCodigoExemplar(exemplar);
-		this.setDisponivel(true);
-	}
-
-
-	public int getCodigoLivro() {
-		return codigoLivro;
-	}
-
-
-	public void setCodigoLivro(int codigoLivro) {
-		this.codigoLivro = codigoLivro;
 	}
 
 
@@ -32,14 +24,20 @@ public class Exemplar {
 		this.codigoExemplar = codigoExemplar;
 	}
 
-
-	public boolean isDisponivel() {
-		return disponivel;
+	public StatusExemplar getStatus() {
+		return status;
 	}
 
+	public void setStatus(StatusExemplar status) {
+		this.status = status;
+	}
 
-	public void setDisponivel(boolean disponivel) {
-		this.disponivel = disponivel;
+	public Usuario getEmprestadoPara() {
+		return emprestadoPara;
+	}
+
+	public void setEmprestadoPara(Usuario emprestadoPara) {
+		this.emprestadoPara = emprestadoPara;
 	}
 	
 	

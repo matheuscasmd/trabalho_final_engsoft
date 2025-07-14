@@ -2,7 +2,7 @@ package controlador.comandos;
 
 import entidades.Livro;
 import entidades.usuarios.Usuario;
-import repositorio.Repositorio;
+import utils.Repositorio;
 
 public class ComandoEmprestar implements IComando {
 
