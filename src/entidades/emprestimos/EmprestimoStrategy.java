@@ -1,5 +1,8 @@
 package entidades.emprestimos;
 
+import entidades.Livro;
+import entidades.usuarios.Usuario;
+
 public abstract class EmprestimoStrategy {
     protected final int limiteLivros;
     protected final int prazoDias;
@@ -9,9 +12,13 @@ public abstract class EmprestimoStrategy {
         this.prazoDias = prazoDias;
     }
 
-    public abstract void realizarEmprestimo(int idUsuario, int codigoLivro);
+    public int getPrazoDias() {
+        return prazoDias;
+    }
 
-    public abstract int getLimiteLivros();
+    public int getLimiteLivros() {
+        return limiteLivros;
+    }
 
-    public abstract int getPrazoDias();
+    public abstract boolean podeEmprestimo(Usuario usuario, Livro livro);
 }

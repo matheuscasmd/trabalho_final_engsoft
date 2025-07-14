@@ -1,5 +1,5 @@
 package controlador.comandos;
 
-public interface Comando {
+public interface IComando {
 	    void executar(String[] argumentos);
 }

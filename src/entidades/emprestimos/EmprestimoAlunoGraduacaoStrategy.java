@@ -1,25 +1,17 @@
 package entidades.emprestimos;
 
+import entidades.Livro;
+import entidades.usuarios.Usuario;
+
 public class EmprestimoAlunoGraduacaoStrategy extends EmprestimoStrategy {
 	
 	public EmprestimoAlunoGraduacaoStrategy() {
 		super(3,4);
-		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
-	public void realizarEmprestimo(int idUsuario, int codigoLivro) {
+	public boolean podeEmprestimo(Usuario usuario, Livro livro) {
 		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getLimiteLivros() {
-		return 3;
-	}
-
-	@Override
-	public int getPrazoDias() {
-		return 4;
+		return false;
 	}
 }

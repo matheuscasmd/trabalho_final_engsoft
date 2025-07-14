@@ -1,5 +1,8 @@
 package entidades.emprestimos;
 
+import entidades.Livro;
+import entidades.usuarios.Usuario;
+
 public class EmprestimoProfessorStrategy extends EmprestimoStrategy {
 
 	
@@ -9,12 +12,7 @@ public class EmprestimoProfessorStrategy extends EmprestimoStrategy {
 		super(SEM_LIMITE, 8);
 	}
 
-	
-	@Override
-	public void realizarEmprestimo(int idUsuario, int codigoLivro) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	@Override
 	public int getLimiteLivros() {
@@ -24,6 +22,13 @@ public class EmprestimoProfessorStrategy extends EmprestimoStrategy {
 	@Override
 	public int getPrazoDias() {
 		return 8;
+	}
+
+
+	@Override
+	public boolean podeEmprestimo(Usuario usuario, Livro livro) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	
