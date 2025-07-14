@@ -11,20 +11,7 @@ public class EmprestimoProfessorStrategy extends EmprestimoStrategy {
 	public EmprestimoProfessorStrategy() {
 		super(SEM_LIMITE, 8);
 	}
-
-
-
-	@Override
-	public int getLimiteLivros() {
-		return SEM_LIMITE;
-	}
-
-	@Override
-	public int getPrazoDias() {
-		return 8;
-	}
-
-
+	
 	@Override
 	public boolean podeEmprestimo(Usuario usuario, Livro livro) {
 		// TODO Auto-generated method stub

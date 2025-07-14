@@ -32,7 +32,7 @@ public class Usuario {
         emprestimos.add(e);
         ex.status = StatusExemplar.EMPRESTADO;
         ex.emprestadoPara = this;
-        reservas.removeIf(r -> r.livro == livro);
+        reservas.removeIf(r -> r.getLivro() == livro);
         livro.reservas.removeIf(r -> r.usuario == this);
         return true;
     }
