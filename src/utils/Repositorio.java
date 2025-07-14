@@ -17,7 +17,6 @@ public class Repositorio {
 	
 	private ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 	private ArrayList<Livro> livros = new ArrayList<Livro>();
-	private ArrayList<Exemplar> exemplares = new ArrayList<Exemplar>();
 	
 	private Repositorio() {
 		popularUsuariosDadosTeste();
@@ -96,7 +95,6 @@ public class Repositorio {
 	            return u;
 	        }
 	    }
-	    System.out.println("Usuário não encontrado");
 	    return null;
 	}
 

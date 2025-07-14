@@ -8,7 +8,11 @@ public class ComandoLivro implements IComando {
 	@Override
 	public void executar(String[] args) {
 		Livro l = Repositorio.getInstance().buscarLivroPorCodigo(Integer.parseInt(args[1]));
-        l.descrever();
+        if(l != null) {
+        	l.descrever();
+        } else {
+    	    System.out.println("Livro não encontrado");
+        }
     }
 
 }

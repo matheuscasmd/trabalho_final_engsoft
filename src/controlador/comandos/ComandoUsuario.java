@@ -11,6 +11,8 @@ public class ComandoUsuario implements IComando {
 		
 		if(u != null) {
 	        u.descrever();
+		} else {
+		    System.out.println("Usuário não encontrado");
 		}
     }
 

@@ -92,15 +92,6 @@ public class Livro {
     public void removerReserva(Usuario u) {
     	this.reservas.removeIf(r -> r.usuario == u);
     }
-    
-
-    @Override
-    public String toString() {
-        return String.format(
-            "Livro [ID=%d, Título=%s, Editora=%s, Autores=%s, Edição=%s, Ano=%d]",
-            id, titulo, editora, autores, edicao, anoPublicacao
-        );
-    }
 
 	public int getCodigo() {
 		return this.id;
@@ -115,8 +106,12 @@ public class Livro {
 
 
 	public void descrever() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Código: " + id);
+        System.out.println("Título: " + titulo);
+        System.out.println("Editora: " + editora);
+        System.out.println("Autores: " + autores);
+        System.out.println("Edição: " + edicao);
+        System.out.println("Ano: " + anoPublicacao);
 	}
 
 	public void adicionarExemplar(Exemplar exemplar) {
