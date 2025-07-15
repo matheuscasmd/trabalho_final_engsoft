@@ -18,6 +18,7 @@ public class Emprestimo {
 		this.exemplar = exemplar;
 		this.dataEmprestimo = dataEmprestimo;
 		this.dataPrevistaDevolucao = dataPrevistaDevolucao;
+		this.status = StatusEmprestimo.EM_CURSO;
 	}
 	
 	public String toString() {
@@ -46,4 +47,8 @@ public class Emprestimo {
 	public Exemplar getExemplar() {
 		return this.exemplar;
 	}
+	
+	public boolean estaAtrasado() {
+        return status.equals(StatusEmprestimo.EM_CURSO) && LocalDate.now().isAfter(dataPrevistaDevolucao);
+    }
 }

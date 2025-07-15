@@ -70,4 +70,8 @@ public class Usuario {
         for (Reserva r : reservas)
             System.out.println("- " + r);
     }
+    
+    public List<Emprestimo> getEmprestimos(){
+    	return this.emprestimos;
+    }
 }

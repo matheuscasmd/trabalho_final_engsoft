@@ -31,6 +31,10 @@ public class Livro {
     public Exemplar getExemplarDisponivel() {
         return exemplares.stream().filter(e -> e.getStatus() == StatusExemplar.DISPONIVEL).findFirst().orElse(null);
     }
+    
+    public long getQuantidadeDisponivel() {
+    	return exemplares.stream().filter(e -> e.getStatus() == StatusExemplar.DISPONIVEL).count();
+    }
 
     public int getId() {
         return id;
@@ -104,6 +108,9 @@ public class Livro {
 	}
 
 
+	public List<Reserva> getReservas(){
+		return this.reservas;
+	}
 
 	public void descrever() {
 		System.out.println("Código: " + id);

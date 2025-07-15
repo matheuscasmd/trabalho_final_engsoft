@@ -1,5 +1,8 @@
 package entidades.emprestimos;
 
+import java.util.List;
+
+import entidades.Emprestimo;
 import entidades.Livro;
 import entidades.usuarios.Usuario;
 
@@ -14,8 +17,11 @@ public class EmprestimoProfessorStrategy extends EmprestimoStrategy {
 	
 	@Override
 	public boolean podeEmprestimo(Usuario usuario, Livro livro) {
-		// TODO Auto-generated method stub
-		return false;
+	    List<Emprestimo> emprestimos = usuario.getEmprestimos();
+	    boolean semExemplarDisponivel = livro.getExemplarDisponivel() == null;
+	    long emprestimosAtraso = emprestimos.stream().filter(Emprestimo::estaAtrasado).count();
+
+	    return !semExemplarDisponivel && emprestimosAtraso == 0;
 	}
 
 	
